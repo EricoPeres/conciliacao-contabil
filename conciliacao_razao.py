@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 
 def importar_razao_excel(caminho_arquivo):
     """Importa o arquivo Excel contendo o razão contábil."""
@@ -42,8 +43,8 @@ def conciliacao_por_valor(df):
 
     return conciliacoes, df
 
-def exibir_resultado(conciliacoes, df):
-    """Exibe os pares conciliados."""
+def exibir_resultado(conciliacoes, df, caminho_arquivo_original):
+    """Exibe os pares conciliados e salva os não conciliados em um novo arquivo Excel."""
     for i, j in conciliacoes:
         print("\n--- Conciliação encontrada ---")
         print("Lançamento 1:")
@@ -55,6 +56,16 @@ def exibir_resultado(conciliacoes, df):
     if not nao_conciliados.empty:
         print("\n--- Lançamentos não conciliados ---")
         print(nao_conciliados[['Débito', 'Crédito', 'Valor']])
+
+        # Gera o caminho para o novo arquivo Excel
+        pasta = os.path.dirname(caminho_arquivo_original)
+        caminho_saida = os.path.join(pasta, 'lancamentos_nao_conciliados.xlsx')
+
+        try:
+            nao_conciliados.to_excel(caminho_saida, index=False)
+            print(f"\nArquivo 'lancamentos_nao_conciliados.xlsx' salvo em: {caminho_saida}")
+        except Exception as e:
+            print(f"Erro ao salvar o arquivo Excel: {e}")
     else:
         print("\nTodos os lançamentos foram conciliados!")
 
@@ -64,4 +75,4 @@ if __name__ == "__main__":
     
     if df_razao is not None:
         conciliacoes, df_resultado = conciliacao_por_valor(df_razao)
-        exibir_resultado(conciliacoes, df_resultado)
+        exibir_resultado(conciliacoes, df_resultado, caminho)

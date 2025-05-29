@@ -1,8 +1,10 @@
-# Projeto Conciliação Contábil em Python
+# Projeto Ferramentas Contábeis em Python
 
-Arquivo em Python para conciliação das contas contábeis em um arquivo excel
+Neste conjunto de ferramentas estão:
 
-Na versão atual ele está conciliando somente por valores iguais entre as colunas "Débito" e "Crédito".
+- Conciliação Automática v0.72: está conciliando por valores iguais somente e gerando um arquivo em excel com os lançamentos não conciliados;
+- Análise Vertical Balanço v0.48: fazer a análise vertical de um balanço, vou incluir outras análises;
+- PDF Converter v0.52: conversão de arquivos pdf em excel, ainda fazer alguns ajustes;
+- Mesclador PDF v0.75: mesclar todos os arquivos pdf de uma pasta e mesclar em um único arquivo;
 
-Vou procurar agora melhorar procurando o número do documento de cada lançamento.
 

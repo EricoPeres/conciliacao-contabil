@@ -1,2 +1,0 @@
-- Tentar criar um script para arrumar automaticamente os arquivos de razão no Fortes gerados para excel;
-- Tentar criar um script para extrair do PDF uma planilha em excel;
